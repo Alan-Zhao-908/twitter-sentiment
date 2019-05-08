@@ -1,0 +1,54 @@
+{
+  "name": "twitter-sentiment",
+  "version": "1.0.0",
+  "description": "sentiment analysis for twitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -d --watch --display-error-details",
+    "server": "nodemon --inspect ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alan-Zhao-908/twitter-sentiment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alan-Zhao-908/twitter-sentiment/issues"
+  },
+  "homepage": "https://github.com/Alan-Zhao-908/twitter-sentiment#readme",
+  "dependencies": {
+    "@google-cloud/language": "^2.1.0",
+    "@google-cloud/storage": "^2.5.0",
+    "axios": "^0.18.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "jade": "^1.11.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.0",
+    "passport": "^0.4.0",
+    "passport-twitter": "^1.0.4",
+    "path": "^0.12.7",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-slick": "^0.23.2",
+    "react-star-rating": "^1.4.2",
+    "serve-favicon": "^2.5.0",
+    "twit": "^2.2.11",
+    "webpack": "^3.11.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.2"
+  }
+}
