@@ -9,6 +9,7 @@ var Strategy = require('passport-twitter').Strategy;
 var session = require('express-session');
 var Twit = require('twit')
 const analyzeSyntax = require('../google_api/analyzeSyntax.js')
+const analyzeSentiment = require('../google_api/analyzeSentiment.js')
 
 
 const T = new Twit({
@@ -124,7 +125,38 @@ app.post('/adjectives', async (req,res) => {
   await res.send(arr)
 })
 
+app.post('/sentiment', async (req,res) => {
+  var tweets = req.body
 
+  const loop = async (tweets) => {
+    var promises = tweets.tweets.map(async (element) => {
+      let adj = await analyzeSentiment(element)
+      return adj
+    })
+    let result = await Promise.all(promises);
+    return result
+  }
+  
+  let data = await loop(tweets)
+  console.log(data)
+  // let adjectives = await []
+  // await data.map(async item => {
+  //   item.map(a => {
+  //     adjectives.push(a)
+  //   })
+  // })
+  // const result = adjectives.reduce((total, value) => {
+  //   total[value] = (total[value] || 0) + 1;
+  //   return total;
+  //   }, {});
+  
+  // var arr = []
+  // for (i in result) {
+  //   arr.push(`${i}: ${result[i]}`)
+  // }
+  // console.log(arr)
+  await res.send(data)
+})
 
 let port = 3000
 

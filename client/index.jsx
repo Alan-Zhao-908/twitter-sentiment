@@ -9,7 +9,8 @@ class App extends React.Component {
   	this.state = {
       input: ['hi', 'hello'],
       tweets: [],
-      adjectives: []
+      adjectives: [],
+      sentiment: []
     };
     // you might have to do something important here!
   }
@@ -26,7 +27,8 @@ class App extends React.Component {
     .then(result => {
       this.setState({
         tweets: result.data,
-        adjectives: []
+        adjectives: [],
+        sentiment: []
       })
     })
   }
@@ -78,6 +80,36 @@ class App extends React.Component {
       )
   }
 
+  getSentiment() {
+    let load = this.state.tweets
+    axios.post('/sentiment', {tweets: load})
+    .then(result => {
+      console.log(result.data)
+      this.setState({
+        sentiment: result.data
+      })
+    })
+  }
+
+  renderSentiment() {
+    const {sentiment} = this.state;
+    console.log(sentiment[0])
+      if (sentiment.length === 0) {
+        return null;
+      }
+      return (
+
+        <div>
+          <h2>Tweet Sentiment</h2>
+          <ul>
+            {sentiment.map(function(item,i){
+               return (<li key={i}>{`score: ${item[0]}, magnitude: ${item[1]}`} </li>)
+            })}
+          </ul>
+        </div>
+      )
+  }
+
   render () {
   	return (
       <div className="app">
@@ -94,12 +126,19 @@ class App extends React.Component {
             {this.renderTweets.call(this)}
           </div>
         </div>
+        <button className="btn hidden-sm-down" onClick={this.getSentiment.bind(this)}>
+          <span className="glyphicon glyphicon-search">Calculate Sentiment</span>
+        </button>
+        <div>
+            {this.renderSentiment.call(this)}
+        </div>
         <button className="btn hidden-sm-down" onClick={this.getAdjectives.bind(this)}>
           <span className="glyphicon glyphicon-search">Calculate Adjectives</span>
         </button>
         <div>
             {this.renderAdjectives.call(this)}
         </div>
+
       </div>
     );
   }
