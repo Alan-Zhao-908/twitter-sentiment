@@ -1,6 +1,8 @@
 # twitter-sentiment
 sentiment analysis for twitter
 
+<img src = "twitter_sentiment.png" width =700>
+
 # Deployed Link
 Deployed: http://ec2-3-87-189-31.compute-1.amazonaws.com:3000/?fbclid=IwAR0v_7I3jpcIsc2S7NNjavvR56rWKP8S-4_C5t3DT1n1pq6mOz5IWTG3pJw
 
