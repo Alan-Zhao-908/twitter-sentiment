@@ -77,7 +77,7 @@ app.get('/tweets/:word', (req,res) => {
   var day  = date.getDate() -1;
   day = (day < 10 ? "0" : "") + day;
   //get texts
-  T.get('search/tweets', { q: `${word} since:${year}-${month}-${day}`, count: 15}, function(err, data, response) {
+  T.get('search/tweets', { q: `${word} since:${year}-${month}-${day}`, count: 10}, function(err, data, response) {
     if (err) console.log(err)
 
     let texts = [];
